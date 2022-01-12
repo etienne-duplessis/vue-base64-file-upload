@@ -37,6 +37,10 @@ export default {
     defaultPreview: {
       type: String,
       default: ''
+    },
+    isMultiple: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -123,24 +127,25 @@ export default {
 
   template: `
     <div class="vue-base64-file-upload">
-      <img
-        v-show="previewImage && !disablePreview"
-        :src="previewImage"
-        :class="imageClass" />
-      <div class="vue-base64-file-upload-wrapper" :style="wrapperStyles">
-        <input
-          type="file"
-          @change="onChange"
-          :style="fileInputStyles"
-          :accept=accept />
-        <input
-          type="text"
-          :class="inputClass"
-          :style="textInputStyles"
-          :value="fileName || file && file.name"
-          :placeholder="placeholder"
-          disabled />
-      </div>
+    <img
+      v-show="previewImage && !disablePreview"
+      :src="previewImage"
+      :class="imageClass"/>
+    <div class="vue-base64-file-upload-wrapper" :style="wrapperStyles">
+      <input
+        :multiple="isMultiple"
+        type="file"
+        @change="onChange"
+        :style="fileInputStyles"
+        :accept=accept/>
+      <input
+        type="text"
+        :class="inputClass"
+        :style="textInputStyles"
+        :value="fileName || file && file.name"
+        :placeholder="placeholder"
+        disabled/>
+    </div>
     </div>
   `
 };
