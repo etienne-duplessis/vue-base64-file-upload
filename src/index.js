@@ -137,7 +137,7 @@ export default {
         type="file"
         @change="onChange"
         :style="fileInputStyles"
-        :accept=accept/>
+        :accept="accept"/>
       <input
         type="text"
         :class="inputClass"
